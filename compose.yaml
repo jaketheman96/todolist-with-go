@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app  # Monta apenas os arquivos de código-fonte
+    working_dir: /app  # Define o diretório de trabalho
+    command: >
+      sh -c "go build -o /go/bin/godocker && /go/bin/godocker"
